@@ -6,7 +6,7 @@ CREATE TABLE cliente (
     id_cliente INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100),
     apellido VARCHAR(100),
-    email VARCHAR(254) UNIQUE, 
+    email VARCHAR(254) UNIQUE,
     PRIMARY KEY (id_cliente)
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE compra (
 
 CREATE TABLE metodo_de_pago (
     id_metodo_de_pago INT NOT NULL AUTO_INCREMENT,
-    tipo ENUM ('Efectivo', 'Tarjeta', 'Aplicación'),
+    tipo ENUM('Efectivo', 'Tarjeta', 'Aplicación'),
     PRIMARY KEY (id_metodo_de_pago)
 );
 
@@ -33,7 +33,8 @@ CREATE TABLE productos (
     nombre VARCHAR(254),
     descripcion VARCHAR(254),
     stock INT,
-    id_categoria_productos INT, -- FK
+    id_categoria_productos INT,
+    id_proveedores iNT,
     PRIMARY KEY (id_productos)
 );
 
@@ -55,8 +56,8 @@ CREATE TABLE local (
     id_local INT NOT NULL AUTO_INCREMENT,
     direccion VARCHAR(255) UNIQUE NOT NULL,
     encargado VARCHAR(255) NOT NULL,
-    horarios ENUM ('9', '21'),
-    id_empleados INT, -- FK
+    horarios ENUM('9', '21'),
+    id_empleados INT,
     PRIMARY KEY (id_local)
 );
 
@@ -71,7 +72,7 @@ CREATE TABLE empleados (
 
 CREATE TABLE categoria_empleado (
     id_categoria_empleado INT NOT NULL AUTO_INCREMENT,
-    rol ENUM ('Vendedor', 'Encargado'),
+    rol ENUM('Vendedor', 'Encargado'),
     PRIMARY KEY (id_categoria_empleado)
 );
 
@@ -79,29 +80,29 @@ CREATE TABLE categoria_empleado (
 
 CREATE TABLE compra_metodo_de_pago (
     id_compra_metodo_de_pago INT NOT NULL AUTO_INCREMENT,
-    id_compra INT, -- FK
-    id_metodo_de_pago INT, -- FK
+    id_compra INT,
+    id_metodo_de_pago INT,
     PRIMARY KEY (id_compra_metodo_de_pago)
 );
 
 CREATE TABLE detalle_de_compra (
     id_detalle_de_compra INT NOT NULL AUTO_INCREMENT,
-    id_compra INT, -- FK
-    id_productos INT, -- FK
+    id_compra INT,
+    id_productos INT,
     PRIMARY KEY (id_detalle_de_compra)
 );
 
 CREATE TABLE local_empleados (
     id_local_empleados INT NOT NULL AUTO_INCREMENT,
-    id_local INT, -- FK
-    id_empleados INT, -- FK
+    id_local INT,
+    id_empleados INT,
     PRIMARY KEY (id_local_empleados)
 );
 
 CREATE TABLE empleados_categoria (
     id_empleados_categoria INT NOT NULL AUTO_INCREMENT,
-    id_empleados INT, -- FK
-    id_categoria_empleado INT, -- FK
+    id_empleados INT,
+    id_categoria_empleado INT,
     PRIMARY KEY (id_empleados_categoria)
 );
 
@@ -124,6 +125,10 @@ CREATE TABLE empleados_categoria (
     ALTER TABLE productos
     ADD CONSTRAINT fk_constraint_id_categoria_productos
     FOREIGN KEY (id_categoria_productos) REFERENCES categoria_productos(id_categoria_productos);
+    
+    ALTER TABLE productos
+    ADD CONSTRAINT fk_constraint_id_proveedor
+    FOREIGN KEY (id_proveedores) REFERENCES proveedores(id_proveedores);
     
     -- FK TABLA LOCAL
 	ALTER TABLE local
