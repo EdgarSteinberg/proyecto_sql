@@ -1,3 +1,50 @@
+# Segunda Entrega por Edgar Steinberg 🚀
+
+## Vistas
+
+### `vw_ventas_empleado_local`
+Muestra el total de ventas realizadas por cada empleado y por cada local. Se calcula la venta total por empleado y por local, agrupando por el ID del empleado y ordenando por las ventas del empleado.
+
+### `vw_compras_completadas`
+Muestra el total de compras completadas y las ventas totales por cada local, agrupando por local y mostrando la cantidad de compras completadas y su total de ventas.
+
+---
+
+## Funciones
+
+### `fx_total_ventas_por_metodo`
+Retorna el número total de ventas realizadas mediante un método de pago específico, como 'Efectivo', al contar las compras asociadas a ese método.
+
+### `fx_total_stock_producto`
+Retorna el stock total disponible para un producto específico. Si el producto no existe o no tiene stock, devuelve un mensaje indicando que no hay stock disponible.
+
+---
+
+## Procedimientos
+
+### `AgregarCliente`
+Inserta un nuevo cliente en la tabla `cliente` utilizando los parámetros proporcionados (nombre, apellido y email), y luego retorna los datos del cliente insertado.
+
+### `GenerarInformeComprasYEmpleados`
+Genera un informe de compras y empleados, limitando la cantidad de resultados y filtrando por estado de compra. Incluye información de la compra, el cliente, el empleado y el local.
+
+---
+
+## Triggers
+
+### `trigger_bi_stock`
+Valida que el stock de un producto sea mayor a 0 antes de insertarlo en la tabla `productos`. Si el stock es 0 o negativo, genera un error personalizado y evita la inserción.
+
+### `trg_cliente_insert`
+Registra una auditoría de inserciones en la tabla `cliente_auditoria` cada vez que se inserta un nuevo cliente en la tabla `cliente`, guardando la acción de inserción.
+
+### `trg_cliente_update`
+Registra una auditoría de actualizaciones en la tabla `cliente_auditoria` cada vez que se actualiza un cliente en la tabla `cliente`, guardando la acción de actualización.
+
+### `trg_cliente_delete`
+Registra una auditoría de eliminaciones en la tabla `cliente_auditoria` cada vez que se elimina un cliente de la tabla `cliente`, guardando la acción de eliminación.
+
+
 ## Primer DER Local de Deportes
 ![alt text](image.png)
 

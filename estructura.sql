@@ -130,7 +130,7 @@ CREATE TABLE empleados_categoria (
     ADD CONSTRAINT fk_constraint_id_proveedor
     FOREIGN KEY (id_proveedores) REFERENCES proveedores(id_proveedores);
     
-    -- FK TABLA LOCAL
+-- FK TABLA LOCAL
 	ALTER TABLE local
     ADD CONSTRAINT fk_constraint_id_empleados
     FOREIGN KEY (id_empleados) REFERENCES empleados(id_empleados);
