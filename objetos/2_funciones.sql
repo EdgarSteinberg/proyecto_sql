@@ -1,8 +1,8 @@
-/* Descripción de la Función fx_total_ventas_por_metodo.
+-- Descripción de la Función fx_total_ventas_por_metodo.
 
-Esta función permite calcular el total de ventas asociadas a un método de pago específico. Al recibir como parámetro el nombre del método de pago (_metodo_pago), realiza una consulta sobre las tablas relacionadas para determinar cuántas compras se han realizado utilizando ese método.
+-- Esta función permite calcular el total de ventas asociadas a un método de pago específico. Al recibir como parámetro el nombre del método de pago (_metodo_pago), realiza una consulta sobre las tablas relacionadas para determinar cuántas compras se han realizado utilizando ese método.
 
-La función es útil para analizar tendencias de pago y evaluar la preferencia de los clientes por ciertos métodos, como "Efectivo", "Tarjeta", o "Aplicacion". */
+-- La función es útil para analizar tendencias de pago y evaluar la preferencia de los clientes por ciertos métodos, como "Efectivo", "Tarjeta", o "Aplicacion". */
 
 USE es_deportes; 
 
@@ -31,11 +31,11 @@ DELIMITER ;
 
 SELECT es_deportes.fx_total_ventas_por_metodo('Efectivo');
 
---------------------------------------------------------------------------------------------------
+-- ------------------------------------------------------------------------------------------------
 
-/* Descripción de la Función fx_total_stock_producto.
+-- Descripción de la Función fx_total_stock_producto.
 
-Esta función calcula el stock total de un producto específico basado en su nombre. Si el producto no existe o no tiene stock disponible, devuelve un mensaje informativo indicando esta situación. Es útil para consultas rápidas sobre la disponibilidad de inventario. */
+-- Esta función calcula el stock total de un producto específico basado en su nombre. Si el producto no existe o no tiene stock disponible, devuelve un mensaje informativo indicando esta situación. Es útil para consultas rápidas sobre la disponibilidad de inventario. */
 
 USE es_deportes; 
 

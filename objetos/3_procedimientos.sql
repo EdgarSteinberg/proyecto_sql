@@ -1,4 +1,4 @@
-/* El procedimiento GenerarInformeComprasYEmpleados genera un informe detallado de las compras realizadas en la tienda, incluyendo información sobre el cliente, el empleado que atendió la compra y el local donde se realizó. Permite filtrar las compras según su estado (Pendiente, Completada, Cancelada) y limitar la cantidad de registros */
+-- El procedimiento GenerarInformeComprasYEmpleados genera un informe detallado de las compras realizadas en la tienda, incluyendo información sobre el cliente, el empleado que atendió la compra y el local donde se realizó. Permite filtrar las compras según su estado (Pendiente, Completada, Cancelada) y limitar la cantidad de registros 
 
 USE es_deportes;
 DROP PROCEDURE IF EXISTS GenerarInformeComprasYEmpleados;
@@ -37,10 +37,10 @@ DELIMITER ;
 CALL GenerarInformeComprasYEmpleados('Pendiente', 5);
 
 
----------------------------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------------------
 
-/* El procedimiento AgregarCliente sirve para insertar un nuevo cliente en la tabla cliente, recibiendo como parámetros el nombre, apellido y correo electrónico del cliente
- */
+-- El procedimiento AgregarCliente sirve para insertar un nuevo cliente en la tabla cliente, recibiendo como parámetros el nombre, apellido y correo electrónico del cliente
+ 
 
 
 USE es_deportes;

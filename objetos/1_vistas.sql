@@ -26,9 +26,9 @@ SELECT * FROM es_deportes.vw_ventas_empleado_local;
 -- -----------------------------------------------------------------------------------------------------
 
 -- Descripción de la Vista vw_compras_completadas.
---La vista vw_compras_completadas proporciona un análisis claro y detallado del desempeño de los locales. Responde a preguntas clave como:
---¿Cuántas compras completadas ha realizado cada local?
---¿Cuál es el total de ventas generado por estas compras?. 
+-- La vista vw_compras_completadas proporciona un análisis claro y detallado del desempeño de los locales. Responde a preguntas clave como:
+-- ¿Cuántas compras completadas ha realizado cada local?
+-- ¿Cuál es el total de ventas generado por estas compras?. 
 
 
 USE es_deportes; 

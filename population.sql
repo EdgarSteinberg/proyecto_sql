@@ -1,5 +1,5 @@
 -- Insertar datos en tablas sin FK
-
+USE es_deportes;
 -- Insertar datos en la tabla 'cliente'
 INSERT INTO cliente (nombre, apellido, email) VALUES
 ('Juan', 'Pérez', 'juan.perez@example.com'),
