@@ -1,6 +1,5 @@
-/* Descripción de la Vista vw_ventas_empleado_local.
-
-La vista vw_ventas_empleado_local fue creada para facilitar la consulta de las ventas totales realizadas por cada empleado, mostrando su nombre y apellido, junto con el total de ventas de los locales donde trabajan. Esta vista consolida la información necesaria para analizar el rendimiento de los empleados y los locales en una sola consulta. */
+-- Descripción de la Vista vw_ventas_empleado_local.
+-- La vista vw_ventas_empleado_local fue creada para facilitar la consulta de las ventas totales realizadas por cada empleado, mostrando su nombre y apellido, junto con el total de ventas de los locales donde trabajan. Esta vista consolida la información necesaria para analizar el rendimiento de los empleados y los locales en una sola consulta. 
 
 USE es_deportes; 
 
@@ -24,16 +23,12 @@ ORDER BY total_ventas_empleado DESC;
 
 SELECT * FROM es_deportes.vw_ventas_empleado_local;
 
+-- -----------------------------------------------------------------------------------------------------
 
-
--------------------------------------------------------------------------------------------------------
-
-
-/* Descripción de la Vista vw_compras_completadas.
-
-La vista vw_compras_completadas proporciona un análisis claro y detallado del desempeño de los locales. Responde a preguntas clave como:
-¿Cuántas compras completadas ha realizado cada local?
-¿Cuál es el total de ventas generado por estas compras?. */
+-- Descripción de la Vista vw_compras_completadas.
+--La vista vw_compras_completadas proporciona un análisis claro y detallado del desempeño de los locales. Responde a preguntas clave como:
+--¿Cuántas compras completadas ha realizado cada local?
+--¿Cuál es el total de ventas generado por estas compras?. 
 
 
 USE es_deportes; 
@@ -55,5 +50,67 @@ ORDER BY total_ventas DESC;
 
 SELECT * FROM es_deportes.vw_compras_completadas;
 
+-- -----------------------------------------------------------------------------------------
 
+-- Vista: vw_stock_productos
+-- Descripción: Proporciona una lista de productos con su stock actual, incluyendo el nombre de la categoría y el proveedor. Esta vista es útil para monitorear la disponibilidad de productos y facilitar la gestión de inventario.
 
+USE es_deportes;
+
+DROP VIEW IF EXISTS es_deportes.vw_stock_productos;
+CREATE VIEW es_deportes.vw_stock_productos AS
+SELECT 
+    p.nombre AS producto_nombre,
+    p.descripcion AS producto_descripcion,
+    p.stock AS stock_actual,
+    cp.nombre AS categoria_nombre,
+    pr.nombre AS proveedor_nombre
+FROM productos p
+LEFT JOIN categoria_productos cp
+ ON p.id_categoria_productos = cp.id_categoria_productos
+LEFT JOIN proveedores pr
+ ON p.id_proveedores = pr.id_proveedores;
+
+SELECT * FROM es_deportes.vw_stock_productos;
+
+-- -----------------------------------------------------------------------------------------------
+
+-- Vista: vw_historial_compras_clientes
+-- Descripción: Muestra el historial de compras de cada cliente, incluyendo detalles como el nombre del cliente, fecha de compra, estado de la compra y el total gastado. Esta vista es útil para analizar el comportamiento de compra de los clientes y evaluar su valor para el negocio.
+
+USE es_deportes;
+
+DROP VIEW IF EXISTS es_deportes.vw_historial_compras_clientes;
+CREATE VIEW es_deportes.vw_historial_compras_clientes AS
+SELECT 
+    c.nombre AS cliente_nombre,
+    c.apellido AS cliente_apellido,
+    co.fecha_de_compra,
+    co.estado_de_compra,
+    (co.precio * co.cantidad) AS total_gastado
+FROM cliente c
+LEFT JOIN compra co ON c.id_cliente = co.id_cliente;
+
+SELECT * FROM  es_deportes.vw_historial_compras_clientes;
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- Vista: vw_ventas_por_categoria
+-- Descripción: Resume las ventas totales por categoría de producto, mostrando el nombre de la categoría, la cantidad total vendida y el ingreso total generado. Esta vista es útil para identificar las categorías de productos más vendidas y orientar estrategias de marketing y ventas.
+
+USE es_deportes;
+
+DROP VIEW IF EXISTS es_deportes.vw_ventas_por_categoria;
+CREATE VIEW es_deportes.vw_ventas_por_categoria AS
+SELECT 
+    cp.nombre AS categoria_nombre,
+    SUM(co.cantidad) AS cantidad_total_vendida,
+    SUM(co.precio * co.cantidad) AS ingreso_total
+FROM categoria_productos cp
+LEFT JOIN productos p 
+ON cp.id_categoria_productos = p.id_categoria_productos
+LEFT JOIN compra co
+ ON p.id_productos = co.id_productos
+GROUP BY cp.nombre;
+
+SELECT * FROM  es_deportes.vw_ventas_por_categoria;

@@ -170,3 +170,5 @@ El diseño de esta base de datos permite gestionar de manera eficiente:
 Este sistema es robusto y permite llevar un control detallado sobre transacciones, personal, inventario y métodos de pago, brindando una base sólida para la administración de un local de deportes.
 
 ---
+
+--MARKDOWN
