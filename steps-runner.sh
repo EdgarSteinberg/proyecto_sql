@@ -39,7 +39,8 @@ source /proyecto_sql/population.sql; \
 source /proyecto_sql/objetos/1_vistas.sql; \
 source /proyecto_sql/objetos/2_funciones.sql; \
 source /proyecto_sql/objetos/3_procedimientos.sql; \
-source /proyecto_sql/objetos/4_triggers.sql; "
+source /proyecto_sql/objetos/4_triggers.sql; \
+source /proyecto_sql/objetos/5_usuarios.sql;"
 
 
 
