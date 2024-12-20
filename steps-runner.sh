@@ -48,17 +48,19 @@ source /proyecto_sql/objetos/4_triggers.sql; "
 #usuarios levantar todo el proyecto como non-root
 # crear base de datos
 
-docker exec -it mysql-server mysql \
+docker exec -it -e MYSQL_PWD="coderhouse" mysql-server \
+ mysql \
  --verbose \
  -u root \
- -p -e "\
-source /proyecto_sql/usuario-non-root.sql"
+ -e "\
+source /proyecto_sql/usuario-non-root.sql;"
 
 
-docker exec -it mysql-server mysql \
+docker exec -it -e MYSQL_PWD="usuario3" mysql-server\
+ mysql \
  --verbose \
  -u non_root \
- -p -e "\
+ -e "\
 source /proyecto_sql/estructura.sql; \
 source /proyecto_sql/population.sql; \
 source /proyecto_sql/objetos/1_vistas.sql; \
