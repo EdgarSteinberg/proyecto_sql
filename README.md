@@ -1,5 +1,16 @@
 # Proyecto final por Edgar Steinberg 🚀
 
+## Tabla de Contenidos  
+1. [Descripción General](#descripción-general)  
+2. [Problemática que Resuelve](#problemática-que-resuelve)  
+3. [Vistas](#vistas)  
+4. [Funciones](#funciones)  
+5. [Procedimientos](#procedimientos)  
+6. [Triggers](#triggers)  
+7. [Usuarios](#usuarios)  
+8. [Estructura de la Base de Datos](#estructura-de-la-base-de-datos)  
+9. [Pasos para Arrancar el Proyecto](#pasos-para-arrancar-el-proyecto)  
+
 ## Primer DER Local de Deportes
 ![alt text](img/image.png)
 
@@ -11,6 +22,8 @@
 ## Descripción General
 
 Esta base de datos está diseñada para gestionar un negocio de deportes, proporcionando una estructura para almacenar y relacionar información sobre clientes, compras, productos, métodos de pago, empleados y locales. El objetivo es optimizar las consultas de compras, control de inventario, gestión de personal y administración de locales.
+
+---
 
 ## Problemática que Resuelve
 
@@ -112,7 +125,7 @@ Usuario con acceso completo a todas las tablas y objetos de la base de datos `es
   - `id_compra`: INT (Clave primaria, autoincremental)
   - `precio`: INT
   - `cantidad`: DECIMAL(10, 2)
-  - `fecha_de_compra`: DATETIME (Fecha de la compra, valor predeterminado: `NOW()`)
+  - `fecha_de_compra`: DATETIME (Fecha de la compra, valor predeterminado: `NOW()`).
   - `estado_de_compra`: ENUM('Pendiente', 'Completada', 'Cancelada')
   - `id_cliente`: INT (Clave foránea a `cliente`)
   - `id_local`: INT (Clave foránea a `local`)
@@ -163,5 +176,14 @@ Usuario con acceso completo a todas las tablas y objetos de la base de datos `es
   - `rol`: ENUM('Vendedor', 'Encargado')
 - **Relaciones**: Relacionada con `empleados` a través de `empleados_categoria`.
 
+---
 
--- MARKDOWN
+## Pasos para Arrancar el Proyecto
+
+1. Abre una terminal de Linux.
+2. Ejecuta los siguientes comandos:
+    - `make` _En caso de error de conexión al socket, vuelve a ejecutar el comando_.
+    - `make clean-db` Limpia la base de datos.
+    - `make test-db` Muestra los datos de cada tabla.
+    - `make backup-db` Realiza un respaldo de la base de datos.
+    - `make access-db` Accede a la base de datos.
