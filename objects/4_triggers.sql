@@ -1,6 +1,7 @@
 -- Descripción del Trigger trigger_bi_stock.
 
 -- El trigger trigger_bi_stock valida que el valor del stock de un producto sea mayor a 0 antes de insertarlo en la tabla productos. Si se intenta insertar un producto con un stock menor o igual a 0, el trigger genera un error personalizado con el mensaje: "El stock debe ser mayor a 0". Esto asegura que solo se registren productos con disponibilidad real en el inventario, garantizando la consistencia y utilidad de los datos. 
+USE es_deportes;
 
 DELIMITER //
 
@@ -28,8 +29,8 @@ INSERT INTO productos (nombre, descripcion, stock, id_categoria_productos, id_pr
 VALUES ('Producto Prueba', 'Descripción válida', 10, 1, 1);
 
 -- Inserción inválida: genera error
-INSERT INTO productos (nombre, descripcion, stock, id_categoria_productos, id_proveedores) 
-VALUES ('Producto Inválido', 'Stock negativo', -5, 1, 1);
+-- INSERT INTO productos (nombre, descripcion, stock, id_categoria_productos, id_proveedores) 
+-- VALUES ('Producto Inválido', 'Stock negativo', -5, 1, 1);
 
 
 -- --------------------------------------------------------------------------------------------------

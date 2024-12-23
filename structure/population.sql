@@ -1,5 +1,7 @@
 -- Insertar datos en tablas sin FK
 USE es_deportes;
+
+
 -- Insertar datos en la tabla 'cliente'
 INSERT INTO cliente (nombre, apellido, email) VALUES
 ('Juan', 'Pérez', 'juan.perez@example.com'),
@@ -122,3 +124,10 @@ INSERT INTO detalle_de_compra (id_compra, id_productos) VALUES
 (4, 5),
 (5, 1);
 
+LOAD DATA  LOCAL INFILE '/structure/csv/empleados.csv'
+INTO TABLE empleados
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+-- COLUMNAS QUE ME INTERESA INGESTAR
+(nombre, apellido, fecha_de_nacimiento, dni);

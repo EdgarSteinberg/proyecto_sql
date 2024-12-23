@@ -46,10 +46,10 @@ Registra una auditoría de eliminaciones en la tabla `cliente_auditoria` cada ve
 
 
 ## Primer DER Local de Deportes
-![alt text](image.png)
+![alt text](img/image.png)
 
 ## DER WORKBENCH
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 
 # Base de Datos: es_deportes

@@ -86,3 +86,13 @@ source /proyecto_sql/objetos/3_procedimientos.sql; \
 source /proyecto_sql/objetos/4_triggers.sql;
 source /proyecto_sql/objetos/5_usuarios.sql;
 source /proyecto_sql/objetos/6_procedure_tcl.sql;"
+
+
+
+-- SHOW TABLES;
+-- SHOW FULL TABLES IN es_deportes WHERE TABLE_TYPE = 'VIEW';
+-- SELECT User, Host FROM mysql.user;
+-- Database changed
+-- SHOW FULL TABLES IN es_deportes WHERE TABLE_TYPE = 'VIEW';
+-- SELECT * FROM vw_compras_completadas LIMIT 5;
+
