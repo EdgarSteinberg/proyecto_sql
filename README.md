@@ -1,4 +1,29 @@
-# Segunda Entrega por Edgar Steinberg 🚀
+# Proyecto final por Edgar Steinberg 🚀
+
+## Primer DER Local de Deportes
+![alt text](img/image.png)
+
+## DER WORKBENCH
+![alt text](img/image-1.png)
+
+---
+
+## Descripción General
+
+Esta base de datos está diseñada para gestionar un negocio de deportes, proporcionando una estructura para almacenar y relacionar información sobre clientes, compras, productos, métodos de pago, empleados y locales. El objetivo es optimizar las consultas de compras, control de inventario, gestión de personal y administración de locales.
+
+## Problemática que Resuelve
+
+El diseño de esta base de datos permite gestionar de manera eficiente:
+- **Compras y Métodos de Pago**: Cada compra tiene un estado y se asocia a uno o varios métodos de pago, facilitando el registro de transacciones completas.
+- **Inventario y Stock de Productos**: La relación entre `productos` y `categoria_productos` permite un control detallado y categorización del inventario.
+- **Gestión de Empleados y Roles**: Las relaciones entre empleados y categorías organizan los roles y la asignación de personal en los locales.
+- **Locales y Empleados**: La asignación de empleados a locales específicos ayuda en la organización de las operaciones.
+- **Consultas y Reportes**: Este modelo facilita consultas y reportes sobre ventas, stock, empleados por local y métodos de pago utilizados.
+
+Este sistema es robusto y permite llevar un control detallado sobre transacciones, personal, inventario y métodos de pago, brindando una base sólida para la administración de un local de deportes.
+
+---
 
 ## Vistas
 
@@ -7,6 +32,15 @@ Muestra el total de ventas realizadas por cada empleado y por cada local. Se cal
 
 ### `vw_compras_completadas`
 Muestra el total de compras completadas y las ventas totales por cada local, agrupando por local y mostrando la cantidad de compras completadas y su total de ventas.
+
+### `vw_stock_productos`
+Proporciona una lista de productos con su stock actual, el nombre de la categoría a la que pertenecen y el proveedor. Esta vista es útil para monitorear la disponibilidad de los productos y facilitar la gestión de inventario.
+
+### `vw_historial_compras_clientes`
+Muestra el historial de compras de cada cliente, incluyendo detalles como el nombre, apellido, la fecha de compra, el estado de la compra y el total gastado. Esta vista es útil para analizar el comportamiento de compra de los clientes y su valor para el negocio.
+
+### `vw_ventas_por_categoria`
+Resume las ventas totales por categoría de producto, mostrando el nombre de la categoría, la cantidad total vendida y el ingreso total generado. Esta vista ayuda a identificar las categorías de productos más populares y a ajustar las estrategias de marketing y ventas.
 
 ---
 
@@ -44,19 +78,20 @@ Registra una auditoría de actualizaciones en la tabla `cliente_auditoria` cada 
 ### `trg_cliente_delete`
 Registra una auditoría de eliminaciones en la tabla `cliente_auditoria` cada vez que se elimina un cliente de la tabla `cliente`, guardando la acción de eliminación.
 
+---
 
-## Primer DER Local de Deportes
-![alt text](img/image.png)
+## Usuarios
 
-## DER WORKBENCH
-![alt text](img/image-1.png)
+### `usuario_1`
+Usuario con acceso limitado únicamente a las vistas `vw_ventas_empleado_local` y `vw_compras_completadas`. Este usuario tiene privilegios de solo lectura en dichas vistas, permitiendo consultar datos relacionados con ventas y compras completadas.
 
+### `usuario_2`
+Usuario con acceso de solo lectura a todas las tablas de la base de datos `es_deportes`. Ideal para tareas de análisis y generación de reportes sin posibilidad de modificar los datos.
 
-# Base de Datos: es_deportes
+### `usuario_3`
+Usuario con acceso completo a todas las tablas y objetos de la base de datos `es_deportes`. Este usuario posee todos los privilegios, incluyendo la capacidad de lectura, escritura, modificación y eliminación de datos, así como la administración de la base de datos.
 
-## Descripción General
-
-Esta base de datos está diseñada para gestionar un negocio de deportes, proporcionando una estructura para almacenar y relacionar información sobre clientes, compras, productos, métodos de pago, empleados y locales. El objetivo es optimizar las consultas de compras, control de inventario, gestión de personal y administración de locales.
+---
 
 ## Estructura de la Base de Datos
 
@@ -128,47 +163,5 @@ Esta base de datos está diseñada para gestionar un negocio de deportes, propor
   - `rol`: ENUM('Vendedor', 'Encargado')
 - **Relaciones**: Relacionada con `empleados` a través de `empleados_categoria`.
 
-### Tablas Intermedias
 
-#### `compra_metodo_de_pago`
-- **Descripción**: Relaciona las compras con los métodos de pago utilizados.
-- **Campos**:
-  - `id_compra_metodo_de_pago`: INT (Clave primaria, autoincremental)
-  - `id_compra`: INT (Clave foránea a `compra`)
-  - `id_metodo_de_pago`: INT (Clave foránea a `metodo_de_pago`)
-
-#### `detalle_de_compra`
-- **Descripción**: Registra los detalles de productos en cada compra.
-- **Campos**:
-  - `id_detalle_de_compra`: INT (Clave primaria, autoincremental)
-  - `id_compra`: INT (Clave foránea a `compra`)
-  - `id_productos`: INT (Clave foránea a `productos`)
-
-#### `local_empleados`
-- **Descripción**: Relaciona los locales con sus empleados asignados.
-- **Campos**:
-  - `id_local_empleados`: INT (Clave primaria, autoincremental)
-  - `id_local`: INT (Clave foránea a `local`)
-  - `id_empleados`: INT (Clave foránea a `empleados`)
-
-#### `empleados_categoria`
-- **Descripción**: Relaciona los empleados con sus categorías o roles.
-- **Campos**:
-  - `id_empleados_categoria`: INT (Clave primaria, autoincremental)
-  - `id_empleados`: INT (Clave foránea a `empleados`)
-  - `id_categoria_empleado`: INT (Clave foránea a `categoria_empleado`)
-
-## Problemática que Resuelve
-
-El diseño de esta base de datos permite gestionar de manera eficiente:
-- **Compras y Métodos de Pago**: Cada compra tiene un estado y se asocia a uno o varios métodos de pago, facilitando el registro de transacciones completas.
-- **Inventario y Stock de Productos**: La relación entre `productos` y `categoria_productos` permite un control detallado y categorización del inventario.
-- **Gestión de Empleados y Roles**: Las relaciones entre empleados y categorías organizan los roles y la asignación de personal en los locales.
-- **Locales y Empleados**: La asignación de empleados a locales específicos ayuda en la organización de las operaciones.
-- **Consultas y Reportes**: Este modelo facilita consultas y reportes sobre ventas, stock, empleados por local y métodos de pago utilizados.
-
-Este sistema es robusto y permite llevar un control detallado sobre transacciones, personal, inventario y métodos de pago, brindando una base sólida para la administración de un local de deportes.
-
----
-
---MARKDOWN
+-- MARKDOWN
