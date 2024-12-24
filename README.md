@@ -8,8 +8,9 @@
 5. [Procedimientos](#procedimientos)  
 6. [Triggers](#triggers)  
 7. [Usuarios](#usuarios)  
-8. [Estructura de la Base de Datos](#estructura-de-la-base-de-datos)  
-9. [Pasos para Arrancar el Proyecto](#pasos-para-arrancar-el-proyecto)  
+8. [Transacciones](#transacciones)  
+9. [Estructura de la Base de Datos](#estructura-de-la-base-de-datos)  
+10. [Pasos para Arrancar el Proyecto](#pasos-para-arrancar-el-proyecto)  
 
 ## Primer DER Local de Deportes
 ![alt text](img/image.png)
@@ -105,6 +106,13 @@ Usuario con acceso de solo lectura a todas las tablas de la base de datos `es_de
 Usuario con acceso completo a todas las tablas y objetos de la base de datos `es_deportes`. Este usuario posee todos los privilegios, incluyendo la capacidad de lectura, escritura, modificación y eliminación de datos, así como la administración de la base de datos.
 
 ---
+
+## Transacciones
+
+### `sp_registrar_compra`
+Gestiona el registro de una compra en la tabla `compra`, asegurando que el estado de la compra se mantenga como 'Pendiente' hasta su confirmación. Si la fecha de la compra es válida, se registra correctamente y se realiza un commit; de lo contrario, se realiza un rollback y se retorna un mensaje de error. Esta transacción asegura la integridad de la compra y mantiene el control de los datos relacionados.
+
+--
 
 ## Estructura de la Base de Datos
 

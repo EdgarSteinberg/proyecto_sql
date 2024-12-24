@@ -191,7 +191,7 @@ CREATE TABLE `cliente_auditoria` (
 
 LOCK TABLES `cliente_auditoria` WRITE;
 /*!40000 ALTER TABLE `cliente_auditoria` DISABLE KEYS */;
-INSERT INTO `cliente_auditoria` VALUES (1,6,'Luis','GarcÃ­a','luis.garcia@example.com','INSERT','2024-12-23 18:40:38'),(2,6,'Luis','GarcÃ­a','luis.garcia@example.com','UPDATE','2024-12-23 18:40:38'),(3,6,'Luis Eduardo','GarcÃ­a','luis.garcia@example.com','DELETE','2024-12-23 18:40:38'),(4,7,'Edgar','Steinberg','steinb@gmail.com','INSERT','2024-12-23 18:40:38');
+INSERT INTO `cliente_auditoria` VALUES (1,6,'Luis','GarcÃ­a','luis.garcia@example.com','INSERT','2024-12-24 02:25:55'),(2,6,'Luis','GarcÃ­a','luis.garcia@example.com','UPDATE','2024-12-24 02:25:55'),(3,6,'Luis Eduardo','GarcÃ­a','luis.garcia@example.com','DELETE','2024-12-24 02:25:55'),(4,7,'Edgar','Steinberg','steinb@gmail.com','INSERT','2024-12-24 02:25:55');
 /*!40000 ALTER TABLE `cliente_auditoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +218,7 @@ CREATE TABLE `compra` (
   CONSTRAINT `fk_constraint_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
   CONSTRAINT `fk_constraint_id_local` FOREIGN KEY (`id_local`) REFERENCES `local` (`id_local`),
   CONSTRAINT `fk_constraint_id_productos` FOREIGN KEY (`id_productos`) REFERENCES `productos` (`id_productos`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +227,7 @@ CREATE TABLE `compra` (
 
 LOCK TABLES `compra` WRITE;
 /*!40000 ALTER TABLE `compra` DISABLE KEYS */;
-INSERT INTO `compra` VALUES (1,100,2.00,'2024-12-23 18:40:38','Pendiente',1,1,1),(2,200,1.00,'2024-12-23 18:40:38','Completada',2,2,2),(3,150,5.00,'2024-12-23 18:40:38','Cancelada',3,3,3),(4,120,3.00,'2024-12-23 18:40:38','Pendiente',4,4,4),(5,180,4.00,'2024-12-23 18:40:38','Completada',5,5,5);
+INSERT INTO `compra` VALUES (1,100,2.00,'2024-12-24 02:25:54','Pendiente',1,1,1),(2,200,1.00,'2024-12-24 02:25:54','Completada',2,2,2),(3,150,5.00,'2024-12-24 02:25:54','Cancelada',3,3,3),(4,120,3.00,'2024-12-24 02:25:54','Pendiente',4,4,4),(5,180,4.00,'2024-12-24 02:25:54','Completada',5,5,5),(6,500,3.00,'2024-12-24 02:25:54','Pendiente',1,2,5);
 /*!40000 ALTER TABLE `compra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -683,4 +683,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-23 18:41:05
+-- Dump completed on 2024-12-24  2:26:05
