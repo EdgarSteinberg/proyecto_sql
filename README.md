@@ -1,4 +1,7 @@
-# Proyecto final por Edgar Steinberg 🚀
+# Proyecto Final por Edgar Steinberg 🚀
+# Comisión: 59430
+# Tutor: Nicolás Maugeri
+# Docente: Anderson Michel TORRES
 
 ## Tabla de Contenidos  
 1. [Descripción General](#descripción-general)  
